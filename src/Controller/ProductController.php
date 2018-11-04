@@ -15,6 +15,32 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ProductController extends AbstractController
 {
+     /**
+     * @Route("/stats", name="product_stats", methods="GET")
+     */
+    public function stats(ProductRepository $productRepository): Response
+    {
+    $stats = [
+  'totalProducts' => 25,
+  'onStock' => 12,
+  'bestseller' => 'mobilní telefon Alcatel',
+  'lastUpdate' => '2018-10-11 16:20'
+];
+        return $this->render('product/stats.html.twig', ['stats'=>$stats]);
+    
+
+    }
+    
+     /**
+     * @Route("/", name="product_index", methods="GET")
+     */
+    public function index(ProductRepository $productRepository): Response
+    {
+        return $this->render('product/index.html.twig', ['products' => $productRepository->findAll()]);
+    }
+    
+    
+    
     /**
      * @Route("/new", name="product_new", methods="GET|POST")
      */
@@ -37,6 +63,7 @@ class ProductController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
 
     /**
      * @Route("/{id}", name="product_show", methods="GET")
