@@ -4,8 +4,26 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+    <style>
+a:active {
+	font-weight: bold;
+    }
+</style>
     </head>
     <body>
+        
+<div id="sidebar">
+            {% block sidebar %}
+            <p>Menu</p>
+                <ul>
+                    <li><a href="{{ path('product_index') }}">Výpis produktů</a></li>
+                    <li><a href="{{ path('purchase_order_index') }}">Výpis objednávek</a></li>
+                    <li><a href="{{ path('product_new') }}">Přidat nový produkt</a></li>
+                    <li><a href="{{ path('purchase_order_new') }}">Přidat novou objednávku</a></li>
+                </ul>
+            {% endblock %}
+        </div>
+        <div id="content">
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
