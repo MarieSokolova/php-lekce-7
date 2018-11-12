@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PurchaseOrder{% endblock %}
+
+{% block body %}
+    <h1>PurchaseOrder{</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ PurchaseOrder.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ PurchaseOrder.email}}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+  
+{% endblock %}
