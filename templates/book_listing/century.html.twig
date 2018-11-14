@@ -1,0 +1,95 @@
+
+
+{% block body %}
+<h2>Knihy vydané před rokem 1900</h2>
+        <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Autor</th>
+                <th>Rok vydání</th>
+                <th>Počet stran</th>
+                <th>Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%for century in BookRepository if century.rokVydani<1900 %}
+            <tr>
+                
+                <td>{{century.autor}}</td>
+                <td>{{century.rokVydani}}</td>
+                <td>{{century.pocetStran}}</td>
+                <td>{{century.cena}}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h2>Knihy vydané mezi lety 1900-2000</h2>
+        <table class="table">
+    
+        <thead>
+            <tr>
+                
+                <th>Autor</th>
+                <th>Rok vydání</th>
+                <th>Počet stran</th>
+                <th>Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%for century in BookRepository if century.rokVydani>1900 and century.rokVydani<2000%}
+            <tr>
+                <td>{{century.autor}}</td>
+                <td>{{century.rokVydani}}</td>
+                <td>{{century.pocetStran}}</td>
+                <td>{{century.cena}}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h2>Knihy vydané po roce 2000</h2>
+        <table class="table">
+    
+        <thead>
+            <tr>
+                
+                <th>Autor</th>
+                <th>Rok vydání</th>
+                <th>Počet stran</th>
+                <th>Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%for century in BookRepository if century.rokVydani>2000%}
+            <tr>
+                
+                <td>{{century.autor}}</td>
+                <td>{{century.rokVydani}}</td>
+                <td>{{century.pocetStran}}</td>
+                <td>{{century.cena}}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('book_index') }}">Seznam knih</a>
+    {% endblock %}
+   
+
+
+    
+

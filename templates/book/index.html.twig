@@ -1,0 +1,52 @@
+
+
+<div id="sidebar">
+            {% block sidebar %}
+            <p>Menu</p>
+                <ul>
+                    <li><a href="{{ path('book_century') }}">Knihy podle století</a></li>
+                    <li><a href="{{ path('book_author') }}">Knihy podle autora</a></li>
+                    <li><a href="{{ path('book_price') }}">Knihy podle ceny</a></li>
+                    <li><a href="{{ path('book_new') }}">Nové knihy</a></li>
+                </ul>
+            {% endblock %}
+        </div>
+        <div id="content">
+
+{% block body %}
+    <h1>Book index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>PocetStran</th>
+                <th>Autor</th>
+                <th>RokVydani</th>
+                <th>Cena</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.pocetStran }}</td>
+                <td>{{ book.autor }}</td>
+                <td>{{ book.rokVydani }}</td>
+                <td>{{ book.cena }}</td>
+                <td>
+                    <a href="{{ path('book_show', {'id': book.id}) }}">show</a>
+                    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('book_new') }}">Create new</a>
+{% endblock %}

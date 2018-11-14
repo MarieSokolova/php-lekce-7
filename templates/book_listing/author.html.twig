@@ -1,0 +1,31 @@
+ {%for author in BookRepository %}
+ {{author.autor}}
+ <table class="table">
+        
+        <thead>
+            <tr>
+                <th>Počet stran</th>
+                <th>Autor</th>
+                <th>Rok vydání</th>
+                <th>Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{author.pocetStran}}</td>
+                <td>{{author.autor}}</td>
+                <td>{{author.rokVydani}}</td>
+                <td>{{author.cena}}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+            
+        {% endfor %}
+        </tbody>
+        
+      
+       <a href="{{ path('book_index') }}">Seznam knih</a>
+      

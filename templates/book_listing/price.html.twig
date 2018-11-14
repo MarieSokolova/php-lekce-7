@@ -1,0 +1,31 @@
+<h2>Knihy podle ceny</h2>
+        <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Autor</th>
+                <th>Rok vydání</th>
+                <th>Počet stran</th>
+                <th>Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+{%for price in BookRepository %}
+            <tr>
+                
+                <td>{{price.autor}}</td>
+                <td>{{price.rokVydani}}</td>
+                <td>{{price.pocetStran}}</td>
+                <td>{{price.cena}}</td>
+                
+            </tr>
+            <br>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+            
+        {% endfor %}
+      
+        </tbody>
+          <a href="{{ path('book_index') }}">Seznam knih</a>

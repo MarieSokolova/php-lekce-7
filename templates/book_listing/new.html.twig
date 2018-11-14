@@ -1,0 +1,30 @@
+<h2>Knihy vydané v posledních 24 měsících</h2>
+        <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Autor</th>
+                <th>Rok vydání</th>
+                <th>Počet stran</th>
+                <th>Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+{%for newBook in BookRepository %}
+            <tr>
+                
+                <td>{{newBook.autor}}</td>
+                <td>{{newBook.rokVydani}}</td>
+                <td>{{newBook.pocetStran}}</td>
+                <td>{{newBook.cena}}</td>
+                
+            </tr>
+            <br>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+            <a href="{{ path('book_index') }}">Seznam knih</a>
+        {% endfor %}
+        </tbody>
+          <a href="{{ path('book_index') }}">Seznam knih</a>
